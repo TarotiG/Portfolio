@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;
+    options.Providers.Add<GzipCompressionProvider>();
     options.MimeTypes = new[] { "text/html", "application/javascript", "text/css" };
 });
 builder.Services.Configure<GzipCompressionProviderOptions>(options =>
@@ -36,7 +37,7 @@ app.UseResponseCompression();
 
 app.UseStaticFiles();
 
-app.MapStaticAssets();
+//app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
