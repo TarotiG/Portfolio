@@ -1,7 +1,20 @@
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.MimeTypes = new[] { "text/html", "application/javascript", "text/css" };
+});
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Fastest; // Of Optimal
+});
+
 
 var app = builder.Build();
 
@@ -18,6 +31,8 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseResponseCompression();
 
 app.UseStaticFiles();
 
