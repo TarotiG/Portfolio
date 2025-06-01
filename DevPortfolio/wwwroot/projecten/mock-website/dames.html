@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>KledingBestellen.nl - Dames</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    #cart {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background-color: #fff;
+      color: #222;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    #cart-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    }
+
+    #cart-button:hover {
+    background-color: #0056b3;
+    }
+
+    .cart-modal {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 320px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    animation: slideIn 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    .cart-content {
+    padding: 20px;
+    }
+
+    .cart-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    }
+
+    .cart-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    }
+
+    .cart-content th,
+    .cart-content td {
+    text-align: left;
+    padding: 6px 4px;
+    font-size: 14px;
+    }
+
+    .cart-content th {
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    }
+
+    .cart-content tr:not(:last-child) td {
+    border-bottom: 1px solid #eee;
+    }
+
+    .cart-content button {
+  margin: 0 3px;
+  padding: 2px 6px;
+  font-size: 14px;
+  border: none;
+  background-color: #eee;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cart-content button:hover {
+  background-color: #ccc;
+}
+
+
+    .totaal {
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: right;
+    }
+
+    .leeg {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    }
+
+    .leeg:hover {
+    background-color: #bd2130;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .banner {
+      background-color: #eee;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .producten {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .product button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Damescollectie</h1>
+  <p>Trendy & stijlvol – speciaal voor jou</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="dames.html">Dames</a>
+  <a href="heren.html">Heren</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="banner">
+  <h2>Nieuw in de damescollectie</h2>
+  <p>Stijlvolle outfits voor zomer 2025</p>
+<!-- Winkelwagenknop -->
+<div id="cart-button-container" style="position: fixed; top: 10px; right: 20px; z-index: 1000;">
+    <button onclick="toggleCart()" id="cart-button">
+      🛒 Winkelwagen (<span id="cart-count">0</span>)
+    </button>
+  </div>
+  
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-content">
+      <h3>🛍 Jouw Winkelwagen</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Aantal</th>
+            <th>Prijs</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+      <hr>
+      <p class="totaal">Totaal: €<span id="cart-total">0.00</span></p>
+      <button class="leeg" onclick="clearCart()">🗑 Leeg winkelwagen</button>
+  
+      <h4 style="margin-top: 20px;">✔️ Checkout</h4>
+      <form onsubmit="submitCheckout(event)">
+        <input type="text" placeholder="Naam" required style="width: 100%; margin-bottom: 10px;" />
+        <input type="email" placeholder="E-mailadres" required style="width: 100%; margin-bottom: 10px;" />
+        <input type="text" placeholder="Adres" required style="width: 100%; margin-bottom: 10px;" />
+        <button type="submit" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px;">
+          ✔️ Bestellen
+        </button>
+      </form>
+    </div>
+  </div>
+  
+  
+</div>
+
+<section class="producten">
+  <div class="product">
+    <img src="https://via.placeholder.com/200x250?text=Jurk" alt="Zomerjurk">
+    <h3>Zomerjurk</h3>
+    <p>€44,99</p>
+    <button onclick="addToCart('Zomerjurk', 44.99)">Toevoegen aan winkelwagen</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/200x250?text=Top" alt="Top">
+    <h3>Bloemen Top</h3>
+    <p>€19,99</p>
+    <button onclick="addToCart('Bloemen Top', 19.99)">Toevoegen aan winkelwagen</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/200x250?text=Rok" alt="Rok">
+    <h3>Elegante Rok</h3>
+    <p>€29,99</p>
+    <button onclick="addToCart('Elegante Rok', 29.99)">Toevoegen aan winkelwagen</button>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 KledingBestellen.nl - Alle rechten voorbehouden
+</footer>
+
+</body>
+<script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cartItems') || '[]');
+    }
+  
+    function saveCart(cart) {
+      localStorage.setItem('cartItems', JSON.stringify(cart));
+      localStorage.setItem('cartCount', cart.reduce((sum, item) => sum + item.quantity, 0));
+    }
+  
+    function updateCartDisplay() {
+      const cart = getCart();
+      const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
+  
+      document.getElementById('cart-count').textContent = cartCount;
+      document.getElementById('cart-total').textContent = total;
+  
+      const cartItemsList = document.getElementById('cart-items');
+      if (cartItemsList) {
+        cartItemsList.innerHTML = '';
+        cart.forEach((item, index) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.name}</td>
+            <td>
+              <button onclick="changeQty(${index}, -1)">➖</button>
+              ${item.quantity}
+              <button onclick="changeQty(${index}, 1)">➕</button>
+            </td>
+            <td>€${(item.price * item.quantity).toFixed(2)}</td>
+            <td><button onclick="removeItem(${index})" style="color: red;">✖</button></td>
+          `;
+          cartItemsList.appendChild(row);
+        });
+      }
+    }
+  
+    function addToCart(name, price) {
+      const cart = getCart();
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      saveCart(cart);
+      updateCartDisplay();
+    }
+  
+    function changeQty(index, delta) {
+      const cart = getCart();
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart(cart);
+      updateCartDisplay();
+    }
+  
+    function removeItem(index) {
+      const cart = getCart();
+      cart.splice(index, 1);
+      saveCart(cart);
+      updateCartDisplay();
+    }
+  
+    function clearCart() {
+      localStorage.removeItem('cartItems');
+      localStorage.removeItem('cartCount');
+      updateCartDisplay();
+    }
+  
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      if (modal.style.display === 'block') {
+        modal.style.display = 'none';
+      } else {
+        modal.style.display = 'block';
+        updateCartDisplay();
+      }
+    }
+  
+    function submitCheckout(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  form.querySelector('button[type="submit"]').disabled = true;
+  form.querySelector('button[type="submit"]').textContent = "⏳ Verzenden...";
+
+  // Simuleer een verzendvertraging
+  setTimeout(() => {
+    alert("✅ Bedankt voor je bestelling!\nWe nemen snel contact met je op.");
+    
+    clearCart();
+    form.reset();
+
+    form.querySelector('button[type="submit"]').disabled = false;
+    form.querySelector('button[type="submit"]').textContent = "✔️ Bestellen";
+
+    toggleCart(); // sluit de modal
+
+  }, 1500); // 1,5 seconde 'verzenden'
+}
+
+  
+    document.addEventListener('DOMContentLoaded', updateCartDisplay);
+  </script>
+  
+  
+</html>
