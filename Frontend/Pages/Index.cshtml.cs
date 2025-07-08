@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using DevPortfolio.Models;
+using Backend.Models;
 
 namespace DevPortfolio.Pages
 {

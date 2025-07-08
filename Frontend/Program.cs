@@ -1,4 +1,6 @@
+using Backend.Persistence;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +13,15 @@ builder.Services.AddResponseCompression(options =>
     options.Providers.Add<GzipCompressionProvider>();
     options.MimeTypes = new[] { "text/html", "application/javascript", "text/css" };
 });
+
 builder.Services.Configure<GzipCompressionProviderOptions>(options =>
 {
     options.Level = CompressionLevel.Fastest; // Of Optimal
 });
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 
 var app = builder.Build();
@@ -37,7 +44,7 @@ app.UseResponseCompression();
 
 app.UseStaticFiles();
 
-//app.MapStaticAssets();
+//app.MapStaticAssets(); 
 app.MapRazorPages()
    .WithStaticAssets();
 

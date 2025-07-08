@@ -1,10 +1,11 @@
-﻿namespace DevPortfolio.Models
+﻿namespace Backend.Models
 {
     /// <summary>
     /// Dit is het model voor projecten
     /// </summary>
     public class Project
     {
+        public Guid Id { get; set; }
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;
         public string Function { get; set; } = default!;
