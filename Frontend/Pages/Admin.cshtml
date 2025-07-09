@@ -4,8 +4,8 @@
 	Layout = "./Shared/_AdminLayout.cshtml";
 	ViewData["Title"] = "Admin Page";
 }
-<div>
-	<form method="POST">
+<div class="py-16 bg-gray-900">
+	<form method="POST" asp-page-handler="Project">
 		<h4 class="text-2xl font-bold mb-4">Project toevoegen</h4>
 		<div class="mb-4">
 			<label for="projectName" class="block text-sm font-medium text-gray-700">Naam Project</label>
@@ -26,15 +26,15 @@
 			</select>
 		</div>
 		<br />
-		@* <div class="mb-4"> *@
-		@* 	<label for="projectStartDate" class="block text-sm font-medium text-gray-700">Startdatum</label> *@
-		@* 	<input type="date" id="projectStartDate" name="NewProject.Period" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required /> *@
-		@* </div> *@
-		@* <br /> *@
-		@* <div class="mb-4"> *@
-		@* 	<label for="projectEndDate" class="block text-sm font-medium text-gray-700">Einddatum</label> *@
-		@* 	<input type="date" id="projectEndDate" name="projectEndDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required /> *@
-		@* </div> *@
+		<div class="mb-4">
+		<label for="projectStartDate" class="block text-sm font-medium text-gray-700">Startdatum</label>
+		<input type="date" id="projectStartDate" name="NewProject.StartDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+		</div>
+		<br />
+		<div class="mb-4">
+		<label for="projectEndDate" class="block text-sm font-medium text-gray-700">Einddatum</label>
+		<input type="date" id="projectEndDate" name="NewProject.EndDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+		</div>
 		<br />
 		<div class="mb-4">
 			<label for="Technology" class="block text-sm font-medium text-gray-700">Gebruikte technologie</label>
@@ -49,6 +49,29 @@
 			</select>
 		</div>
 		<br />
-		<button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Add Project</button>
+		<button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Project toevoegen</button>
+	</form>
+</div>
+<br />
+<div class="py-16 bg-gray-900">
+	<form method="POST" asp-page-handler="Certificate">
+		<h4 class="text-2xl font-bold mb-4">Certficaat toevoegen</h4>
+		<div class="mb-4">
+			<label for="projectName" class="block text-sm font-medium text-gray-700">Naam Certificaat</label>
+			<input type="text" id="projectName" name="NewCertificate.Name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+		</div>
+		<br />
+		<div class="mb-4">
+			<label for="projectDescription" class="block text-sm font-medium text-gray-700">Certificaat Omschrijving</label>
+			<textarea id="projectDescription" name="NewCertificate.Description" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea>
+		</div>
+		<br />
+		<div class="mb-4">
+		<label for="projectStartDate" class="block text-sm font-medium text-gray-700">Afgiftedatum</label>
+		<input type="date" id="projectStartDate" name="NewCertificate.IssueDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+		</div>
+		<br />
+
+		<button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Certificaat toevoegen</button>
 	</form>
 </div>

@@ -31,6 +31,7 @@ builder.Services.AddDefaultIdentity<FrontendUser>()
     .AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.AddScoped<ProjectRepository>();
+builder.Services.AddScoped<CertificateRepository>();
 
 var app = builder.Build();
 
