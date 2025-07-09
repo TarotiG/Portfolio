@@ -1,9 +1,11 @@
 ﻿using Backend.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Backend.Models;
 
 namespace Backend.Persistence
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<FrontendUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

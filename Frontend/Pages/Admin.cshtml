@@ -1,0 +1,54 @@
+﻿@page
+@model Frontend.Pages.AdminModel
+@{
+	Layout = "./Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Admin Page";
+}
+<div>
+	<form method="POST">
+		<h4 class="text-2xl font-bold mb-4">Project toevoegen</h4>
+		<div class="mb-4">
+			<label for="projectName" class="block text-sm font-medium text-gray-700">Naam Project</label>
+			<input type="text" id="projectName" name="NewProject.Name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+		</div>
+		<br />
+		<div class="mb-4">
+			<label for="projectDescription" class="block text-sm font-medium text-gray-700">Project Omschrijving</label>
+			<textarea id="projectDescription" name="NewProject.Description" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea>
+		</div>
+		<br />
+		<div class="mb-4">
+			<label for="projectFunction" class="block text-sm font-medium text-gray-700">Functie tijdens project</label>
+			<select id="projectFunction" name="NewProject.Function" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+				<option value="Developer">Developer</option>
+				<option value="Tester">Tester</option>
+				<option value="Test-automation Engineer">Test-automation Engineer</option>
+			</select>
+		</div>
+		<br />
+		@* <div class="mb-4"> *@
+		@* 	<label for="projectStartDate" class="block text-sm font-medium text-gray-700">Startdatum</label> *@
+		@* 	<input type="date" id="projectStartDate" name="NewProject.Period" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required /> *@
+		@* </div> *@
+		@* <br /> *@
+		@* <div class="mb-4"> *@
+		@* 	<label for="projectEndDate" class="block text-sm font-medium text-gray-700">Einddatum</label> *@
+		@* 	<input type="date" id="projectEndDate" name="projectEndDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required /> *@
+		@* </div> *@
+		<br />
+		<div class="mb-4">
+			<label for="Technology" class="block text-sm font-medium text-gray-700">Gebruikte technologie</label>
+			<input type="text" id="Technology" name="NewProject.Technology" class="mt-1 block w-full p-2 border border-gray-300 rounded-md"/>
+		</div>
+		<br />
+		<div class="mb-4">
+			<label for="personalProject" class="block text-sm font-medium text-gray-700">Persoonlijk project</label>
+			<select id="personalProject" name="NewProject.PersonalProject" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+				<option value="true">Ja</option>
+				<option value="false">Nee</option>
+			</select>
+		</div>
+		<br />
+		<button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Add Project</button>
+	</form>
+</div>
