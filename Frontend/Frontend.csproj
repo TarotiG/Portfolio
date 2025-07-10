@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="React\Componenten\" />
+        <Folder Include="React\Componenten\MockApp\" />
         <Folder Include="wwwroot\projecten\" />
     </ItemGroup>
 
