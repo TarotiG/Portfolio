@@ -1,11 +1,13 @@
 ﻿using Backend.Models;
 using Backend.Persistence.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Frontend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class CertificateController : Controller
     {
         private readonly ILogger<CertificateController> _logger;
