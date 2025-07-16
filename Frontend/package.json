@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "eslint": "^9.31.0",
+    "monaco-editor": "^0.52.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^6.0.1"
+  }
+}

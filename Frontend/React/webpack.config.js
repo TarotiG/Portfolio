@@ -2,11 +2,18 @@
 
 module.exports = {
     entry: {
-        mywidget: './React/index.js',
+        index: './index.jsx',
+        certificate: './Componenten/Certificate/Certificate.jsx',
+        certificateGallery: './Componenten/Certificate/CertificateGallery.jsx',
+        project: './Componenten/Project/Project.jsx',
+        projectDescription: './Componenten/Project/ProjectDescription.jsx',
+        projectCodeView: './Componenten/Project/ProjectCodeView.jsx',
+        //liveCode: './React/Componenten/LiveCode/',
+        //mockApp: './React/Componenten/MockApp/',
         // je kunt hier meer entry points toevoegen als je meerdere bundles wil
     },
     output: {
-        path: path.resolve(__dirname, 'wwwroot/js'),
+        path: path.resolve(__dirname, 'C:\\Users\\tyron\\source\\repos\\DevPortfolio\\Frontend\\wwwroot\\js\\'),
         filename: '[name].bundle.js', // bijvoorbeeld: mywidget.bundle.js
         clean: true, // ruim oude bundles op
     },

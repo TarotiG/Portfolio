@@ -8,7 +8,15 @@
 
     <ItemGroup>
         <Folder Include="React\Componenten\MockApp\" />
+        <Folder Include="React\src\" />
         <Folder Include="wwwroot\projecten\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\js\certificate.bundle.js" />
+      <None Include="wwwroot\js\certificate.bundle.js.map" />
+      <None Include="wwwroot\js\certificateGallery.bundle.js" />
+      <None Include="wwwroot\js\certificateGallery.bundle.js.map" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,7 +38,7 @@
 	<!-- Production Build -->
 	<Target Name="BuildReactComponent" BeforeTargets="Build">
 		<Exec Command="npm install" WorkingDirectory="React" />
-		<Exec Command="npx webpack --mode production" WorkingDirectory="React" />
+		<Exec Command="npx webpack --mode development" WorkingDirectory="React" />
 	</Target>
 
 </Project>

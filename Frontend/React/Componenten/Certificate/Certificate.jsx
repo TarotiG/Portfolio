@@ -1,4 +1,6 @@
-﻿export default function Certificate({ cert }) {
+﻿import React from 'react';
+
+export default function Certificate({ cert }) {
     return (
         <div className="bg-gray-700 rounded-lg p-4 shadow-md">
             <h5 className="text-lg font-bold">{cert.title}</h5>
