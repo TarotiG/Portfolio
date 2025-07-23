@@ -8,6 +8,7 @@ module.exports = {
         project: './Componenten/Project/Project.jsx',
         projectDescription: './Componenten/Project/ProjectDescription.jsx',
         projectCodeView: './Componenten/Project/ProjectCodeView.jsx',
+        pdfViewer: './Componenten/Utilities/PDFViewer.jsx',
         //liveCode: './React/Componenten/LiveCode/',
         //mockApp: './React/Componenten/MockApp/',
         // je kunt hier meer entry points toevoegen als je meerdere bundles wil

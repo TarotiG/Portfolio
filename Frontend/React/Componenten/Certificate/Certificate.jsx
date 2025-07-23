@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import PdfViewer from '../Utilities/PDFViewer';
 
 export default function Certificate({ cert }) {
     return (
@@ -8,6 +9,7 @@ export default function Certificate({ cert }) {
             <p className="text-xs text-gray-400">
                 {new Date(cert.issueDate).toLocaleDateString('nl-NL', { month: 'long', year: 'numeric' })}
             </p>
+            <PdfViewer url={cert.pdfUrl} />
         </div>
     );
 }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.IO.Compression;
 using Backend.Models;
+using Backend.Services;
 using Backend.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,7 @@ builder.Services.AddDefaultIdentity<FrontendUser>()
 
 builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<CertificateRepository>();
+builder.Services.AddScoped<PDFService>();
 
 var app = builder.Build();
 

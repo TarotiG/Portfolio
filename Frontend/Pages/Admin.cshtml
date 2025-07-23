@@ -57,18 +57,22 @@
         <form method="POST" asp-page-handler="Certificate">
             <h4 class="text-2xl font-bold mb-4">Certficaat toevoegen</h4>
             <div class="mb-4">
-                <label for="projectName" class="block text-sm font-medium text-gray-700">Naam Certificaat</label>
-                <input type="text" id="projectName" name="NewCertificate.Name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+                <label for="certificateName" class="block text-sm font-medium text-gray-700">Naam Certificaat</label>
+                <input type="text" id="certificateName" name="NewCertificate.Name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
             <br />
             <div class="mb-4">
-                <label for="projectDescription" class="block text-sm font-medium text-gray-700">Certificaat Omschrijving</label>
-                <textarea id="projectDescription" name="NewCertificate.Description" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea>
+                <label for="certDesc" class="block text-sm font-medium text-gray-700">Certificaat Omschrijving</label>
+                <textarea id="certDesc" name="NewCertificate.Description" rows="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea>
             </div>
             <br />
             <div class="mb-4">
-                <label for="projectStartDate" class="block text-sm font-medium text-gray-700">Afgiftedatum</label>
-                <input type="date" id="projectStartDate" name="NewCertificate.IssueDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+                <label for="certIssueDate" class="block text-sm font-medium text-gray-700">Afgiftedatum</label>
+                <input type="date" id="certIssueDate" name="NewCertificate.IssueDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+            </div>
+            <div class="mb-4">
+                <label for="certPdfUrl" class="block text-sm font-medium text-gray-700">Url PDF bestand</label>
+                <input type="text" id="certPdfUrl" name="NewCertificate.PdfUrl" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
             <br />
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Certificaat toevoegen</button>

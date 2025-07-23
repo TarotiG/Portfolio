@@ -9,6 +9,7 @@
     <ItemGroup>
         <Folder Include="React\Componenten\MockApp\" />
         <Folder Include="React\src\" />
+        <Folder Include="wwwroot\pdf-files\" />
         <Folder Include="wwwroot\projecten\" />
     </ItemGroup>
 

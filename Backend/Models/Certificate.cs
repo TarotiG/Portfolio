@@ -6,6 +6,7 @@
         public string Name { get; set; } = default!;
         public DateTime IssueDate { get; set; }
         public string Description { get; set; } = default!;
+        public string PdfUrl { get; }
 
         public Certificate()
         {

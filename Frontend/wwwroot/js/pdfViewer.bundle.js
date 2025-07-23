@@ -2,89 +2,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./Componenten/Certificate/Certificate.jsx":
-/*!*************************************************!*\
-  !*** ./Componenten/Certificate/Certificate.jsx ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Certificate)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Utilities_PDFViewer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Utilities/PDFViewer */ "./Componenten/Utilities/PDFViewer.jsx");
-
-
-function Certificate(_ref) {
-  var cert = _ref.cert;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "bg-gray-700 rounded-lg p-4 shadow-md"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", {
-    className: "text-lg font-bold"
-  }, cert.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "text-sm text-gray-300"
-  }, cert.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "text-xs text-gray-400"
-  }, new Date(cert.issueDate).toLocaleDateString('nl-NL', {
-    month: 'long',
-    year: 'numeric'
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Utilities_PDFViewer__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    url: cert.pdfUrl
-  }));
-}
-
-/***/ }),
-
-/***/ "./Componenten/Utilities/PDFViewer.jsx":
-/*!*********************************************!*\
-  !*** ./Componenten/Utilities/PDFViewer.jsx ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_pdf__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-pdf */ "./node_modules/react-pdf/node_modules/pdfjs-dist/build/pdf.mjs");
-/* harmony import */ var react_pdf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-pdf */ "./node_modules/react-pdf/dist/Document.js");
-/* harmony import */ var react_pdf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-pdf */ "./node_modules/react-pdf/dist/Page.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-//import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-
-// Configureer de PDF.js worker
-react_pdf__WEBPACK_IMPORTED_MODULE_1__.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/".concat(react_pdf__WEBPACK_IMPORTED_MODULE_1__.version, "/pdf.worker.min.js");
-var PdfViewer = function PdfViewer(_ref) {
-  var url = _ref.url;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState2 = _slicedToArray(_useState, 2),
-    numPages = _useState2[0],
-    setNumPages = _useState2[1];
-  var onDocumentLoadSuccess = function onDocumentLoadSuccess(_ref2) {
-    var numPages = _ref2.numPages;
-    setNumPages(numPages);
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_pdf__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    file: url,
-    onLoadSuccess: onDocumentLoadSuccess
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_pdf__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    pageNumber: 1
-  })));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PdfViewer);
-
-/***/ }),
-
 /***/ "./node_modules/clsx/dist/clsx.mjs":
 /*!*****************************************!*\
   !*** ./node_modules/clsx/dist/clsx.mjs ***!
@@ -26824,16 +26741,18 @@ module.exports = warning;
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!********************************************************!*\
-  !*** ./Componenten/Certificate/CertificateGallery.jsx ***!
-  \********************************************************/
+/*!*********************************************!*\
+  !*** ./Componenten/Utilities/PDFViewer.jsx ***!
+  \*********************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ CertificateGallery)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Certificate_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Certificate.jsx */ "./Componenten/Certificate/Certificate.jsx");
+/* harmony import */ var react_pdf__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-pdf */ "./node_modules/react-pdf/node_modules/pdfjs-dist/build/pdf.mjs");
+/* harmony import */ var react_pdf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-pdf */ "./node_modules/react-pdf/dist/Document.js");
+/* harmony import */ var react_pdf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-pdf */ "./node_modules/react-pdf/dist/Page.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -26842,45 +26761,30 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
-function CertificateGallery() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+//import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+
+// Configureer de PDF.js worker
+react_pdf__WEBPACK_IMPORTED_MODULE_1__.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/".concat(react_pdf__WEBPACK_IMPORTED_MODULE_1__.version, "/pdf.worker.min.js");
+var PdfViewer = function PdfViewer(_ref) {
+  var url = _ref.url;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
-    certificates = _useState2[0],
-    setCertificates = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-    _useState4 = _slicedToArray(_useState3, 2),
-    loading = _useState4[0],
-    setLoading = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState6 = _slicedToArray(_useState5, 2),
-    error = _useState6[0],
-    setError = _useState6[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetch('/api/certificate').then(function (res) {
-      if (!res.ok) throw new Error('Netwerkfout');
-      return res.json();
-    }).then(function (data) {
-      setCertificates(data);
-      setLoading(false);
-    })["catch"](function (err) {
-      console.error(err);
-      setError(err);
-      setLoading(false);
-    });
-  }, []);
-  if (loading) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Bezig met laden\u2026");
-  if (error) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fout bij laden: ", error.message);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-  }, certificates.map(function (cert) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Certificate_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: cert.id,
-      cert: cert
-    });
-  }));
-}
+    numPages = _useState2[0],
+    setNumPages = _useState2[1];
+  var onDocumentLoadSuccess = function onDocumentLoadSuccess(_ref2) {
+    var numPages = _ref2.numPages;
+    setNumPages(numPages);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_pdf__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    file: url,
+    onLoadSuccess: onDocumentLoadSuccess
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_pdf__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    pageNumber: 1
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PdfViewer);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=certificateGallery.bundle.js.map
+//# sourceMappingURL=pdfViewer.bundle.js.map

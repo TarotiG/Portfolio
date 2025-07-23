@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "monaco-editor": "^0.52.2",
+    "pdfjs-dist": "^5.3.93",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-pdf": "^10.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
