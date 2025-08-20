@@ -1,5 +1,4 @@
-﻿using PdfiumViewer;
-using SixLabors.ImageSharp;
+﻿using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Jpeg;
 
 namespace Backend.Services

@@ -1,8 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Backend.Persistence.Repositories;
-using Microsoft.AspNetCore.Mvc;
-using Backend.Models;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Frontend.Pages
 {
@@ -10,7 +6,8 @@ namespace Frontend.Pages
     public class AdminModel : PageModel
     {
         private readonly ProjectRepository _projectRepository;
-        private readonly CertificateRepository _certificateRepository;
+        private readonly CertificateService _certificateService;
+        private readonly BestandService _bestandService;
 
         [BindProperty]
         public Project NewProject { get; set; } = new();
@@ -18,10 +15,11 @@ namespace Frontend.Pages
         [BindProperty]
         public Certificate NewCertificate { get; set; } = new();
 
-        public AdminModel(ProjectRepository projectRepository, CertificateRepository certificateRepository)
+        public AdminModel(ProjectRepository projectRepository, CertificateService certificateService, BestandService bestandService)
         {
             _projectRepository = projectRepository;
-            _certificateRepository = certificateRepository;
+            _certificateService = certificateService;
+            _bestandService = bestandService;
         }
         public void OnGet()
         {
@@ -44,10 +42,13 @@ namespace Frontend.Pages
             return RedirectToPage("Index");
         }
 
-        public async Task<IActionResult> OnPostCertificateAsync()
+        public async Task<IActionResult> OnPostCertificateAsync(IFormFile file)
         {
             NewCertificate.IssueDate = DateTime.SpecifyKind(NewCertificate.IssueDate, DateTimeKind.Utc);
-            await _certificateRepository.AddCertificateAsync(NewCertificate);
+            NewCertificate.CertificateFile = _bestandService.ProcessFileFromRequest(file).Result;
+
+            await _certificateService.AddCertificate(NewCertificate);
+
             return RedirectToPage("Index");
         }
     }

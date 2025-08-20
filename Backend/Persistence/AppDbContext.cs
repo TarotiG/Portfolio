@@ -1,7 +1,6 @@
 ﻿using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Backend.Models;
 
 namespace Backend.Persistence
 {
@@ -13,5 +12,17 @@ namespace Backend.Persistence
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<Bestand> Bestanden { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Certificate>()
+                .HasOne(c => c.CertificateFile)
+                .WithOne()
+                .HasForeignKey<Certificate>(c => c.CertificateId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

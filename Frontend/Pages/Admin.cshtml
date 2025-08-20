@@ -4,6 +4,7 @@
 	Layout = "./Shared/_AdminLayout.cshtml";
 	ViewData["Title"] = "Admin Page";
 }
+<!-- Project section -->
 <div class="admin-widgets-container">
     <div class="admin-container">
         <form method="POST" asp-page-handler="Project">
@@ -53,8 +54,9 @@
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Project toevoegen</button>
         </form>
     </div>
+    <!-- Certificate section -->
     <div class="admin-container">
-        <form method="POST" asp-page-handler="Certificate">
+        <form method="POST" asp-page-handler="Certificate" enctype="multipart/form-data">
             <h4 class="text-2xl font-bold mb-4">Certficaat toevoegen</h4>
             <div class="mb-4">
                 <label for="certificateName" class="block text-sm font-medium text-gray-700">Naam Certificaat</label>
@@ -71,8 +73,8 @@
                 <input type="date" id="certIssueDate" name="NewCertificate.IssueDate" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
             <div class="mb-4">
-                <label for="certPdfUrl" class="block text-sm font-medium text-gray-700">Url PDF bestand</label>
-                <input type="text" id="certPdfUrl" name="NewCertificate.PdfUrl" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+                <label for="certFile" class="block text-sm font-medium text-gray-700">Bestand certificaat</label>
+                <input type="file" id="certFile" name="file" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
             <br />
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Certificaat toevoegen</button>

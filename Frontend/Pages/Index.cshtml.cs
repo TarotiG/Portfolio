@@ -8,17 +8,17 @@ namespace DevPortfolio.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly ProjectRepository _projectRepository;
-        private readonly CertificateRepository _certificateRepository;
+        private readonly CertificateService _certificateService;
 
         public string AboutMeText { get; set; }
         public List<Project> Projecten { get; set; }
         public List<Certificate> Certificaten { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, ProjectRepository projectRepository, CertificateRepository certificateRepository)
+        public IndexModel(ILogger<IndexModel> logger, ProjectRepository projectRepository, CertificateService certificateService)
         {
             _logger = logger;
             _projectRepository = projectRepository;
-            _certificateRepository = certificateRepository;
+            _certificateService = certificateService;
         }
 
         public void OnGet()
@@ -27,7 +27,7 @@ namespace DevPortfolio.Pages
             
             // DB Acties
             Projecten = _projectRepository.GetAllProjectsAsync().Result;
-            Certificaten = _certificateRepository.GetAllCertificatesAsync().Result;
+            Certificaten = _certificateService.GetAllCertificates().Result;
 
         }
     }

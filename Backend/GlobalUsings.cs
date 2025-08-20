@@ -6,3 +6,4 @@ global using System.Collections.Generic;
 global using System.Threading.Tasks;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.Extensions.Hosting;
+global using Backend.Models;
