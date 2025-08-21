@@ -13,6 +13,14 @@ namespace Backend.Persistence
         public DbSet<Project> Projects { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<Bestand> Bestanden { get; set; }
+        
+        // Content
+        public DbSet<Content.Introduction> Introductions { get; set; }
+        public DbSet<Content.AboutMe> AboutMes { get; set; }
+        public DbSet<Content.AchievedCertificates> AchievedCertificates { get; set; }
+        public DbSet<Content.HighlightedProjects> HighlightedProjects { get; set; }
+        public DbSet<Content.Contact> Contacts { get; set; }
+        public DbSet<Content.SocialMedia> SocialMedias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -23,6 +31,14 @@ namespace Backend.Persistence
                 .WithOne()
                 .HasForeignKey<Certificate>(c => c.CertificateId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Content.Introduction>();
+            builder.Entity<Content.AboutMe>();
+            builder.Entity<Content.AchievedCertificates>();
+            builder.Entity<Content.HighlightedProjects>();
+            builder.Entity<Content.Contact>();
+            builder.Entity<Content.SocialMedia>();
+
         }
     }
 }
