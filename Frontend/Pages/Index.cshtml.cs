@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
 using Backend.Models;
 using Backend.Persistence.Repositories;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace DevPortfolio.Pages
 {
@@ -21,14 +23,13 @@ namespace DevPortfolio.Pages
             _certificateService = certificateService;
         }
 
-        public void OnGet()
+        public async void OnGetAsync()
         {
             AboutMeText = "Ik ben een test-automation engineer en developer met 5 jaar ervaring in het bouwen van betrouwbare, schaalbare en onderhoudbare oplossingen van testen binnen systemen. Ik werk graag met technologieën zoals C#, Java, Python, Selenium, Robot Framework, Playwright en CI/CD pipelines.";
-            
+
             // DB Acties
             Projecten = _projectRepository.GetAllProjectsAsync().Result;
-            Certificaten = _certificateService.GetAllCertificates().Result;
-
+            Certificaten = await _certificateService.GetAllCertificates();
         }
     }
 }
