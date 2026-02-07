@@ -1,6 +1,4 @@
-﻿
-
-using Backend.Models;
+﻿using Backend.Models;
 using Backend.Persistence.Repositories;
 
 namespace Backend.Services

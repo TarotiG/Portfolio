@@ -1,13 +1,14 @@
-using Microsoft.AspNetCore.Razor.TagHelpers;
-
 namespace Frontend.Pages
 {
     [Authorize(Roles = "Admin")]
     public class AdminModel : PageModel
     {
         private readonly ProjectRepository _projectRepository;
+        private readonly TechnologyRepository _technologyRepository;
         private readonly CertificateService _certificateService;
         private readonly BestandService _bestandService;
+
+        public List<Technology> Technologies { get; set; }
 
         [BindProperty]
         public Project NewProject { get; set; } = new();
@@ -15,18 +16,43 @@ namespace Frontend.Pages
         [BindProperty]
         public Certificate NewCertificate { get; set; } = new();
 
-        public AdminModel(ProjectRepository projectRepository, CertificateService certificateService, BestandService bestandService)
+        [BindProperty]
+        public Technology NewTechnology { get; set; } = new();
+
+        [BindProperty]
+        public List<Guid> SelectedTechnologyIds { get; set; } = new();
+
+        public AdminModel(
+            ProjectRepository projectRepository,
+            CertificateService certificateService,
+            BestandService bestandService,
+            TechnologyRepository technologyRepository
+            )
         {
             _projectRepository = projectRepository;
             _certificateService = certificateService;
             _bestandService = bestandService;
+            _technologyRepository = technologyRepository;
+
+            
         }
         public void OnGet()
         {
+            Technologies = _technologyRepository.GetAllTechnologiesAsync().Result;
         }
 
         public async Task<IActionResult> OnPostProjectAsync()
         {
+            if (SelectedTechnologyIds != null && SelectedTechnologyIds.Any())
+            {
+                foreach (Guid techId in SelectedTechnologyIds)
+                {
+                    Technology technology = _technologyRepository.GetTechnologyByIdAsync(techId).Result;
+                    NewProject.Technologies.Add(technology);
+                }
+                
+            }
+
             NewProject.StartDate = DateTime.SpecifyKind(NewProject.StartDate, DateTimeKind.Utc);
 
             if (NewProject.EndDate == null)
@@ -50,6 +76,12 @@ namespace Frontend.Pages
             await _certificateService.AddCertificate(NewCertificate);
 
             return RedirectToPage("Index");
+        }
+
+        public async Task<IActionResult> OnPostTechnologyAsync()
+        {
+            await _technologyRepository.AddTechnologyAsync(NewTechnology);
+            return RedirectToPage("Admin");
         }
     }
 }

@@ -39,8 +39,23 @@
             </div>
             <br />
             <div class="mb-4">
-                <label for="Technology" class="block text-sm font-medium text-gray-700">Gebruikte technologie</label>
-                <input type="text" id="Technology" name="NewProject.Technology" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" />
+                <label class="block text-sm font-medium text-gray-700 mb-2">Gebruikte technologieën</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                    @for (int i = 0; i < Model.Technologies.Count; i++)
+                    {
+                        <div style="flex: 0 0 calc(33.333% - 8px); display: flex; align-items: center;">
+                            <input type="checkbox"
+                                   id="tech_@Model.Technologies[i].Id"
+                                   name="SelectedTechnologyIds"
+                                   value="@Model.Technologies[i].Id"
+                                   class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                            <label for="tech_@Model.Technologies[i].Id"
+                                   class="ml-2 text-sm text-gray-700">
+                                @Model.Technologies[i].TechnologyName
+                            </label>
+                        </div>
+                    }
+                </div>
             </div>
             <br />
             <div class="mb-4">
@@ -78,6 +93,17 @@
             </div>
             <br />
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Certificaat toevoegen</button>
+        </form>
+    </div>
+    <div class="admin-container">
+        <form method="POST" asp-page-handler="Technology">
+            <h4 class="text-2xl font-bold mb-4">Technologie toevoegen</h4>
+            <div class="mb-4">
+                <label for="technologyName" class="block text-sm font-medium text-gray-700">Naam Technologie</label>
+                <input type="text" id="technologyName" name="NewTechnology.TechnologyName" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+            </div>
+            <br />
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Technologie toevoegen</button>
         </form>
     </div>
 </div>

@@ -29,3 +29,36 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Project transitie animaties */
+.project-card {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+    .project-card.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+    }
+
+#project-detail {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+    #project-detail.show {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 2000px;
+    }
+
+#list-projecten {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+    #list-projecten.hidden {
+        opacity: 0;
+    }

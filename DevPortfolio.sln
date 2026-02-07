@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Fronte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{ECBBBE26-2326-4242-96BC-88B3CB88AE5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testsmith", "Testsmith\Testsmith.csproj", "{3FCDB353-E040-499D-ADE2-5D864CA551ED}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{ECBBBE26-2326-4242-96BC-88B3CB88AE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECBBBE26-2326-4242-96BC-88B3CB88AE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECBBBE26-2326-4242-96BC-88B3CB88AE5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FCDB353-E040-499D-ADE2-5D864CA551ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FCDB353-E040-499D-ADE2-5D864CA551ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FCDB353-E040-499D-ADE2-5D864CA551ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FCDB353-E040-499D-ADE2-5D864CA551ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

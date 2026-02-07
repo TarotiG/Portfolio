@@ -37,6 +37,7 @@ builder.Services.AddDefaultIdentity<FrontendUser>()
 builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<CertificateRepository>();
 builder.Services.AddScoped<BestandRepository>();
+builder.Services.AddScoped<TechnologyRepository>();
 
 // Services
 builder.Services.AddScoped<PDFService>();

@@ -13,7 +13,8 @@ namespace Backend.Persistence
         public DbSet<Project> Projects { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<Bestand> Bestanden { get; set; }
-        
+        public DbSet<Technology> Technologies { get; set; }
+
         // Content
         public DbSet<Content.Introduction> Introductions { get; set; }
         public DbSet<Content.AboutMe> AboutMes { get; set; }
@@ -30,6 +31,12 @@ namespace Backend.Persistence
                 .HasOne(c => c.CertificateFile)
                 .WithOne()
                 .HasForeignKey<Certificate>(c => c.CertificateId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Project>()
+                .HasMany(p => p.Technologies)
+                .WithOne(t => t.Project!)
+                .HasForeignKey(t => t.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Content.Introduction>();

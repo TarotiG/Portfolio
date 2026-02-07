@@ -11,7 +11,7 @@
         public string Function { get; set; } = default!;
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public string Technology { get; set; } = default!;
+        public List<Technology> Technologies { get; set; }
         public bool PersonalProject { get; set; }
 
         public Project()
@@ -20,8 +20,24 @@
             Name = string.Empty;
             Description = string.Empty;
             Function = string.Empty;
-            Technology = string.Empty;
             PersonalProject = false;
+            Technologies = new List<Technology>();
+        }
+    }
+
+    public class Technology
+    {
+        public Guid Id { get; set; }
+
+        public Guid? ProjectId { get; set; }
+        public Project? Project { get; set; }
+
+        public string TechnologyName { get; set; } = default!;
+
+        public Technology()
+        {
+            Id = Guid.NewGuid();
+            TechnologyName = string.Empty;
         }
     }
 }
