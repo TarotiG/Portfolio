@@ -9,35 +9,35 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-blue-100 text-black font-sans">
     <!-- Hero Section -->
-    <section class="text-center py-20 bg-gradient-to-b from-gray-900 to-gray-800">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, ik ben Tyron Gysbertha 👋</h1>
+    <section class="text-center py-20 bg-blue-100">
+        <h1 class="text-gray-600 text-4xl md:text-5xl font-bold mb-4">Hi, ik ben Tyron Gysbertha 👋</h1>
         <br />
-        <img src="#" alt="Foto Tyron toevoegen"/>
-        <br />
-        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+        <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
             Test-automation engineer en developer met een passie voor waarborging van kwalitatieve software, DevOps en moderne webtechnologieën.
         </p>
+        <br />
+        <img src="#" alt="Foto Tyron toevoegen" />
     </section>
 
     <!-- About -->
-    <section id="about" class="py-16 bg-gray-800">
+    <section id="about" class="py-16 bg-blue-100">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-semibold mb-6 text-center">👨‍💻 Over mij</h2>
+            <h2 class="text-gray-600 text-3xl font-semibold mb-6 text-center">👨‍💻 Over mij</h2>
 
             <div class="flex flex-col md:flex-row gap-8 items-start">
                 <!-- Links: Tekst -->
                 <div class="flex-1">
-                    <p class="text-gray-300 text-lg">
+                    <p class="text-gray-600 text-lg font-bold">
                         @Model.AboutMeText
                     </p>
                     <br/>
-                    <p class="text-gray-300 text-lg">
+                    <p class="text-gray-600 text-lg font-bold">
                         @Model.AboutMeText2
                     </p>
                     <br/>
-                    <p class="text-gray-300 text-lg">
+                    <p class="text-gray-600 text-lg font-bold">
                         @Model.AboutMeText3
                     </p>
                 </div>
@@ -46,55 +46,105 @@
                 <div class="flex-shrink-0" style="width: 40rem;">
                     <div class="grid grid-cols-2 gap-6 items-start">
                         <!-- Card 1 (kolom 1, rij 1) -->
-                        <div class="card bg-gray-700 text-white rounded-lg shadow-lg"
-                             style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);"
-                             onmouseenter="this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3)'; this.style.transform='translateY(-4px)';"
-                             onmouseleave="this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(0)';">
-                            <div class="card-body p-6">
-                                <h3 class="card-title text-xxl-center text-black font-bold mb-2">TMAP Gecertificeerd</h3>
-                                <img src="" alt="TMAP"/>
-                                <h6 class="card-subtitle mb-3 text-gray-400">Subtitle</h6>
-                                <p class="card-text text-gray-300 mb-4">Some quick example text to build on the card title.</p>
-                                <a href="#" class="card-link text-blue-400 hover:underline">Link →</a>
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')"
+                             style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2); cursor: pointer;">
+                            <div class="flip-card-inner">
+                                <!-- Front -->
+                                <div class="flip-card-front bg-blue-300 text-white p-6">
+                                    <h3 class="text-xl text-center font-bold mb-4">TMAP Gecertificeerd</h3>
+                                    <img src="~/resources/TMAP-certified.png" alt="TMAP" class="mx-auto mb-4" style="max-width: 120px;" />
+                                    <p class="text-blue-400 text-center text-sm">Klik voor meer info →</p>
+                                </div>
+
+                                <!-- Back -->
+                                <div class="flip-card-back bg-blue-300 text-white p-6 overflow-y-auto">
+                                    <h3 class="text-xl font-bold mb-3">TMAP Certificaat</h3>
+                                    <p class="text-gray-300 text-sm mb-4">Professioneel gecertificeerd in TMAP Next methodologie voor testbeheer en kwaliteitsborging.</p>
+                                    <ul class="text-gray-300 text-sm space-y-2">
+                                        <li>✓ Test strategie & planning</li>
+                                        <li>✓ Risico-gebaseerd testen</li>
+                                        <li>✓ Testontwerp technieken</li>
+                                    </ul>
+                                    <p class="text-blue-400 text-center text-sm mt-4">← Klik om terug te gaan</p>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Card 2 (kolom 2, rij 1) - met margin-top voor offset -->
-                        <div class="card bg-gray-700 text-white rounded-lg shadow-lg" 
-                             style="margin-top: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);"
-                             onmouseenter="this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3)'; this.style.transform='translateY(-4px)';"
-                             onmouseleave="this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(0)';">
-                            <div class="card-body p-6">
-                                <h3 class="card-title text-xxl-center text-black font-bold mb-2">Technical and experienced</h3>
-                                <h6 class="card-subtitle mb-3 text-gray-400">Subtitle</h6>
-                                <p class="card-text text-gray-300 mb-4">Some quick example text to build on the card title.</p>
-                                <a href="#" class="card-link text-blue-400 hover:underline">Link →</a>
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')"
+                             style="margin-top: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2); cursor: pointer;">
+                            <div class="flip-card-inner">
+                                <!-- Front -->
+                                <div class="flip-card-front bg-blue-300 text-white p-6">
+                                    <h3 class="text-xl text-center font-bold mb-4">Technisch en ervaren</h3>
+                                    <img src="~/resources/technical-experienced.png" alt="Technical" class="mx-auto mb-4" style="max-width: 120px;" />
+                                    <p class="text-blue-400 text-center text-sm">Klik voor meer info →</p>
+                                </div>
+
+                                <!-- Back -->
+                                <div class="flip-card-back bg-blue-300 text-white p-6 overflow-y-auto">
+                                    <h3 class="text-xl font-bold mb-3">Ervaring & Expertise</h3>
+                                    <p class="text-gray-300 text-sm mb-4">Jarenlange ervaring in softwareontwikkeling en test-automatisering met moderne technologieën.</p>
+                                    <ul class="text-gray-300 text-sm space-y-2">
+                                        <li>✓ .NET & C# ontwikkeling</li>
+                                        <li>✓ Test automation frameworks</li>
+                                        <li>✓ CI/CD pipelines</li>
+                                        <li>✓ Cloud technologieën</li>
+                                    </ul>
+                                    <p class="text-blue-400 text-center text-sm mt-4">← Klik om terug te gaan</p>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Card 3 (kolom 1, rij 2) -->
-                        <div class="card bg-gray-700 text-white rounded-lg shadow-lg"
-                             style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);"
-                             onmouseenter="this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3)'; this.style.transform='translateY(-4px)';"
-                             onmouseleave="this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(0)';">
-                            <div class="card-body p-6">
-                                <h3 class="card-title text-xxl-center text-black font-bold mb-2">Progressive mindset</h3>
-                                <h6 class="card-subtitle mb-3 text-gray-400">Subtitle</h6>
-                                <p class="card-text text-gray-300 mb-4">Some quick example text to build on the card title.</p>
-                                <a href="#" class="card-link text-blue-400 hover:underline">Link →</a>
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')"
+                             style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2); cursor: pointer;">
+                            <div class="flip-card-inner">
+                                <!-- Front -->
+                                <div class="flip-card-front bg-blue-300 text-white p-6">
+                                    <h3 class="text-xl text-center font-bold mb-4">Vooruitstrevende mindset</h3>
+                                    <img src="~/resources/progressive-mindset.png" alt="progressive" class="mx-auto mb-4" style="max-width: 120px;" />
+                                    <p class="text-blue-400 text-center text-sm">Klik voor meer info →</p>
+                                </div>
+
+                                <!-- Back -->
+                                <div class="flip-card-back bg-blue-300 text-white p-6 overflow-y-auto">
+                                    <h3 class="text-xl font-bold mb-3">Innovatie & Groei</h3>
+                                    <p class="text-gray-300 text-sm mb-4">Continue focus op nieuwe technologieën en best practices om voorop te blijven lopen.</p>
+                                    <ul class="text-gray-300 text-sm space-y-2">
+                                        <li>✓ Agile & DevOps mindset</li>
+                                        <li>✓ Continuous learning</li>
+                                        <li>✓ Early adopter nieuwe tech</li>
+                                        <li>✓ Innovatieve oplossingen</li>
+                                    </ul>
+                                    <p class="text-blue-400 text-center text-sm mt-4">← Klik om terug te gaan</p>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Card 4 (kolom 2, rij 2) - met margin-top voor offset -->
-                        <div class="card bg-gray-700 text-white rounded-lg shadow-lg"
-                             style="margin-top: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);"
-                             onmouseenter="this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3)'; this.style.transform='translateY(-4px)';"
-                             onmouseleave="this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)'; this.style.transform='translateY(0)';">
-                            <div class="card-body p-6">
-                                <h3 class="card-title text-xxl-center text-black font-bold mb-2">Quality above all</h3>
-                                <h6 class="card-subtitle mb-3 text-gray-400">Subtitle</h6>
-                                <p class="card-text text-gray-300 mb-4">Some quick example text to build on the card title.</p>
-                                <a href="#" class="card-link text-blue-400 hover:underline">Link →</a>
+                        <div class="flip-card" onclick="this.classList.toggle('flipped')"
+                             style="margin-top: 3rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2); cursor: pointer;">
+                            <div class="flip-card-inner">
+                                <!-- Front -->
+                                <div class="flip-card-front bg-blue-300 text-white p-6">
+                                    <h3 class="text-xl text-center font-bold mb-4">Quality above all</h3>
+                                    <img src="~/resources/quality-above-all.png" alt="Quality" class="mx-auto mb-4" style="max-width: 120px;" />
+                                    <p class="text-blue-400 text-center text-sm">Klik voor meer info →</p>
+                                </div>
+
+                                <!-- Back -->
+                                <div class="flip-card-back bg-blue-300 text-white p-6 overflow-y-auto">
+                                    <h3 class="text-xl font-bold mb-3">Kwaliteit Voorop</h3>
+                                    <p class="text-gray-300 text-sm mb-4">Gedreven door het leveren van hoogwaardige software door middel van grondige testing en code review.</p>
+                                    <ul class="text-gray-300 text-sm space-y-2">
+                                        <li>✓ Code quality standards</li>
+                                        <li>✓ Automated testing</li>
+                                        <li>✓ Performance optimization</li>
+                                        <li>✓ Security best practices</li>
+                                    </ul>
+                                    <p class="text-blue-400 text-center text-sm mt-4">← Klik om terug te gaan</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,9 +154,9 @@
     </section>
 
     <!--Certificaten-->
-    <section id="certificates" class="py-16 bg-gray-800">
+    <section id="certificates" class="py-16 bg-blue-100">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-2xl font-semibold mb-4">📜 Behaalde certificaten</h2>
+            <h2 class="text-gray-600 text-2xl font-semibold mb-4">📜 Behaalde certificaten</h2>
             <!-- Carousel -->
             <div id="certificateGallery" class="carousel slide" data-bs-ride="carousel">
 
@@ -157,17 +207,17 @@
 
 
     <!-- Projecten; modal popup maken hiervoor -->
-    <section class="py-16 bg-gray-800">
+    <section class="py-16 bg-blue-100">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-16 bg-gray-900">
+    <section id="contact" class="py-16 bg-blue-100">
         <div class="max-w-xl mx-auto px-6 text-center">
-            <h3 class="text-3xl font-semibold mb-4">📬 Contact</h3>
-            <p class="text-gray-400 mb-6">Heb je een project of wil je samenwerken? Stuur me gerust een bericht.</p>
+            <h3 class="text-gray-600 text-3xl font-semibold mb-4">📬 Contact</h3>
+            <p class="text-gray-600 mb-6">Heb je een project of wil je samenwerken? Stuur me gerust een bericht.</p>
             <a href="mailto:jouw.email@domein.nl" class="inline-block bg-blue-500 hover:bg-blue-600 py-3 px-6 rounded-lg text-white">
                 Stuur een e-mail
             </a>
